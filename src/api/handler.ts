@@ -1,5 +1,5 @@
 import * as Joi from "joi";
-import { Namespace, Router, SwaggerRoute, XRayMiddleware } from "vingle-corgi";
+import { Namespace, Router, SwaggerRoute } from "vingle-corgi";
 
 import { routes } from "./routes";
 
@@ -16,7 +16,9 @@ const router = new Router([
     children: routes,
   }),
 ], {
-  middlewares: [],
+  middlewares: [
+    // @todo Add XRay Middleware
+  ],
 });
 
 export const handler = router.handler();
