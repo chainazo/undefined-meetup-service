@@ -2,6 +2,7 @@ import * as Joi from "joi";
 import { Namespace, Router, SwaggerRoute } from "vingle-corgi";
 
 import { routes } from "./routes";
+import { CORSMiddleware } from "./cors_middleware";
 
 const router = new Router([
   new SwaggerRoute(
@@ -18,6 +19,7 @@ const router = new Router([
 ], {
   middlewares: [
     // @todo Add XRay Middleware
+    new CORSMiddleware(),
   ],
 });
 
