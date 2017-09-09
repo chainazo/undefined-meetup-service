@@ -19,7 +19,7 @@ export class CORSMiddleware implements Middleware {
           ...this.generateCORSHeaders(routingContext),
         },
         body: "",
-      }
+      };
     }
   }
 

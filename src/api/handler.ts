@@ -1,8 +1,8 @@
 import * as Joi from "joi";
 import { Namespace, Router, SwaggerRoute } from "vingle-corgi";
 
-import { routes } from "./routes";
 import { CORSMiddleware } from "./cors_middleware";
+import { routes } from "./routes";
 
 const router = new Router([
   new SwaggerRoute(
