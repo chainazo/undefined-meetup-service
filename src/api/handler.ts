@@ -1,6 +1,6 @@
-import * as Joi from "joi";
-import { Namespace, Router, SwaggerRoute } from "vingle-corgi";
+import { Namespace, Route, Router, SwaggerRoute } from "vingle-corgi";
 
+import { generateCORSHeaders } from "../helpers/cors";
 import { CORSMiddleware } from "./cors_middleware";
 import { routes } from "./routes";
 
@@ -13,6 +13,17 @@ const router = new Router([
     },
     routes,
   ),
+  Route.OPTIONS("*", "CORS Preflight endpoint", {},
+    async function() {
+      return {
+        statusCode: 200,
+        headers: {
+          "Content-Type": "text/plain; charset=UTF-8",
+          ...generateCORSHeaders(this),
+        },
+        body: "",
+      };
+  }),
   new Namespace("", {
     children: routes,
   }),
